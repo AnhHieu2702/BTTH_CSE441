@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         btncong = findViewById(R.id.btncong);
         btntru = findViewById(R.id.btntru);
+        btnnhan = findViewById(R.id.btnnhan);
 
         btncong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,5 +56,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    int a = Integer.parseInt(edt1.getText().toString());
+                    int b = Integer.parseInt(edt2.getText().toString());
+                    int tich = a * b;
+                    edt3.setText(a + " * " + b + " = " + tich);
+                } catch (NumberFormatException e) {
+                    edt3.setText("Vui lòng nhập số hợp lệ");
+                }
+            }
+        });
+        
     }
 }
