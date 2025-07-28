@@ -1,6 +1,9 @@
 package com.example.project_cal;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,15 +13,32 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText edt1, edt2, edt3;
+    Button btncong, btntru, btnnhan, btnchia;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        edt1 = findViewById(R.id.edta);
+        edt2 = findViewById(R.id.edtb);
+        edt3 = findViewById(R.id.edtc);
+
+        btncong = findViewById(R.id.btncong);
+
+        btncong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    int a = Integer.parseInt(edt1.getText().toString());
+                    int b = Integer.parseInt(edt2.getText().toString());
+                    int tong = a + b;
+                    edt3.setText(a + " + " + b + " = " + tong);
+                } catch (NumberFormatException e) {
+                    edt3.setText("Vui lòng nhập số hợp lệ");
+                }
+            }
         });
     }
 }
