@@ -48,6 +48,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        
+        btnToFahrenheit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String cStr = editTextCelsius.getText().toString();
+                if (!cStr.isEmpty()) {
+                    try {
+                        double c = Double.parseDouble(cStr);
+                        double f = (c * 9 / 5) + 32;
+                        editTextFahrenheit.setText(String.format("%.2f", f));
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(MainActivity.this, "Invalid Celsius input", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "Please enter Celsius value", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
 }
