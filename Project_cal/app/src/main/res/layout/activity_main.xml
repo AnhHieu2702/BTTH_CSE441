@@ -77,5 +77,50 @@
                 android:layout_weight="1"
                 android:ems="10" />
         </LinearLayout>
+
+        <!-- Button_Operation -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btncong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="0.5"
+                android:text="TỔNG"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btntru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="0.5"
+                android:text="HIỆU"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btnnhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="0.5"
+                android:text="TÍCH"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btnchia"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="0.5"
+                android:text="THƯƠNG"
+                android:textSize="10sp" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
