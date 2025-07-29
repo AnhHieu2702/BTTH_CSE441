@@ -26,6 +26,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       
+        editYear = findViewById(R.id.editYear);
+        textLunarYear = findViewById(R.id.textLunarYear);
+        btnConvert = findViewById(R.id.btnConvert);
+
+        btnConvert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int year = Integer.parseInt(editYear.getText().toString());
+                String canStr = can[year % 10];
+                String chiStr = chi[year % 12];
+                textLunarYear.setText(canStr + " " + chiStr);
+            }
+        });
     }
 }
