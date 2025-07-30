@@ -1,6 +1,12 @@
 package com.example.intent4;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,15 +16,33 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SmsActivity extends AppCompatActivity {
 
+    EditText edtsms;
+    Button btnback2;
+    ImageButton btnsendsms;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sms);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        edtsms = findViewById(R.id.edtsms);
+        btnback2 = findViewById(R.id.btnback2);
+        btnsendsms = findViewById(R.id.btnsms);
+
+        btnsendsms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_SENDTO,
+                        Uri.parse("smsto:" + edtsms.getText().toString()));
+                startActivity(callIntent);
+            }
+        });
+
+        btnback2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
     }
 }
