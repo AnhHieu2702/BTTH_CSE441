@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Intent4">
         <activity
+            android:name=".SmsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhoneActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
