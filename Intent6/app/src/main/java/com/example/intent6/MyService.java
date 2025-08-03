@@ -1,24 +1,48 @@
 package com.example.intent6;
 
-import android.os.Bundle;
+import android.app.Service;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.IBinder;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+public class MyService extends Service {
 
-public class MyService extends AppCompatActivity {
+    MediaPlayer mymedia;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_my_service);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    public IBinder onBind(Intent intent) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mymedia = MediaPlayer.create(this, R.raw.sound);
+        mymedia.setLooping(true);
+        Toast.makeText(this, "Service Created", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (mymedia != null) {
+            if (mymedia.isPlaying()) {
+                mymedia.pause();
+            } else {
+                mymedia.start();
+            }
+        }
+        return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mymedia != null && mymedia.isPlaying()) {
+            mymedia.stop();
+            mymedia.release();
+            mymedia = null;
+        }
+        Toast.makeText(this, "Service Destroyed", Toast.LENGTH_SHORT).show();
+        super.onDestroy();
     }
 }
