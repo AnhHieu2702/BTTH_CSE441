@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Intent6">
         <activity
-            android:name=".ChildActivity"
-            android:exported="false" />
+            android:name=".MyService"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
