@@ -1,24 +1,43 @@
 package com.hungthinh.note;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
+
+    ListView lv;
+    ArrayList<String> arraywork;
+    ArrayAdapter<String> arrAdapter;
+    EditText edtwork, edth, edtm;
+    TextView txtdate;
+    Button btnwork;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        // Ánh xạ
+        edth = findViewById(R.id.edthour);
+        edtm = findViewById(R.id.edtmin);
+        edtwork = findViewById(R.id.edtwork);
+        btnwork = findViewById(R.id.btnadd);
+        lv = findViewById(R.id.listView1);
+        txtdate = findViewById(R.id.txtdate2);
+
+       
     }
 }
